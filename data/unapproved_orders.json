@@ -1,0 +1,50 @@
+[ {
+  "id" : "ORD-3C235AA9",
+  "studentId" : "USR-BT2024057",
+  "rollNumber" : "BT2024002",
+  "servicesRequested" : [ "WASH" ],
+  "weightKg" : 6.9,
+  "itemsToIron" : [ ],
+  "estimatedCost" : 0,
+  "useQuota" : true,
+  "status" : "UNAPPROVED",
+  "createdAt" : "2025-11-27T11:13:20"
+}, {
+  "id" : "ORD-F8331A4F",
+  "studentId" : "USR-BT2024002",
+  "rollNumber" : "BT2024002",
+  "servicesRequested" : [ "WASH" ],
+  "weightKg" : 5.0,
+  "itemsToIron" : [ ],
+  "estimatedCost" : 0,
+  "useQuota" : true,
+  "status" : "UNAPPROVED",
+  "createdAt" : "2025-11-27T11:10:50"
+}, {
+  "id" : "ORD-A14CB1DD",
+  "studentId" : "USR-BT2024001",
+  "rollNumber" : "BT2024001",
+  "servicesRequested" : [ "WASH", "IRON" ],
+  "weightKg" : 4.5,
+  "itemsToIron" : [ {
+    "clothes" : {
+      "type" : "SHIRT",
+      "id" : "579c6f44-856f-433d-a23f-1a5ebdbcdf72",
+      "weightKg" : null,
+      "ironCost" : 10
+    },
+    "quantity" : 5
+  }, {
+    "clothes" : {
+      "type" : "PANT",
+      "id" : "68498fb1-e8ad-45a7-8456-3792076a4436",
+      "weightKg" : null,
+      "ironCost" : 20
+    },
+    "quantity" : 2
+  } ],
+  "estimatedCost" : 90,
+  "useQuota" : true,
+  "status" : "UNAPPROVED",
+  "createdAt" : "2025-11-27T11:10:07"
+} ]
