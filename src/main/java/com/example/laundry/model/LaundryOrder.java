@@ -35,6 +35,9 @@ public class LaundryOrder {
     private Otp otp;
     private String notes;
 
+    private BigDecimal collectedAmount;
+    private String approvedBy;
+
     public LaundryOrder() {
         this.createdAt = LocalDateTime.now();
     }
@@ -56,45 +59,131 @@ public class LaundryOrder {
     }
 
     // --- getters / setters ---
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getStudentId() { return studentId; }
-    public void setStudentId(String studentId) { this.studentId = studentId; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getRollNumber() { return rollNumber; }
-    public void setRollNumber(String rollNumber) { this.rollNumber = rollNumber; }
+    public String getStudentId() {
+        return studentId;
+    }
 
-    public Set<ServiceType> getServicesRequested() { return servicesRequested; }
-    public void setServicesRequested(Set<ServiceType> servicesRequested) { this.servicesRequested = servicesRequested; }
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
 
-    public Double getWeightKg() { return weightKg; }
-    public void setWeightKg(Double weightKg) { this.weightKg = weightKg; }
+    public String getRollNumber() {
+        return rollNumber;
+    }
 
-    public List<OrderItem> getItemsToIron() { return itemsToIron; }
-    public void setItemsToIron(List<OrderItem> itemsToIron) { this.itemsToIron = itemsToIron; }
+    public void setRollNumber(String rollNumber) {
+        this.rollNumber = rollNumber;
+    }
 
-    public BigDecimal getEstimatedCost() { return estimatedCost; }
-    public void setEstimatedCost(BigDecimal estimatedCost) { this.estimatedCost = estimatedCost; }
+    public Set<ServiceType> getServicesRequested() {
+        return servicesRequested;
+    }
 
-    public boolean isUseQuota() { return useQuota; }
-    public void setUseQuota(boolean useQuota) { this.useQuota = useQuota; }
+    public void setServicesRequested(Set<ServiceType> servicesRequested) {
+        this.servicesRequested = servicesRequested;
+    }
 
-    public OrderStatus getStatus() { return status; }
-    public void setStatus(OrderStatus status) { this.status = status; }
+    public Double getWeightKg() {
+        return weightKg;
+    }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public void setWeightKg(Double weightKg) {
+        this.weightKg = weightKg;
+    }
 
-    public LocalDateTime getApprovedAt() { return approvedAt; }
-    public void setApprovedAt(LocalDateTime approvedAt) { this.approvedAt = approvedAt; }
+    public List<OrderItem> getItemsToIron() {
+        return itemsToIron;
+    }
 
-    public LocalDateTime getEta() { return eta; }
-    public void setEta(LocalDateTime eta) { this.eta = eta; }
+    public void setItemsToIron(List<OrderItem> itemsToIron) {
+        this.itemsToIron = itemsToIron;
+    }
 
-    public Otp getOtp() { return otp; }
-    public void setOtp(Otp otp) { this.otp = otp; }
+    public BigDecimal getEstimatedCost() {
+        return estimatedCost;
+    }
 
-    public String getNotes() { return notes; }
-    public void setNotes(String notes) { this.notes = notes; }
+    public void setEstimatedCost(BigDecimal estimatedCost) {
+        this.estimatedCost = estimatedCost;
+    }
+
+    public boolean isUseQuota() {
+        return useQuota;
+    }
+
+    public void setUseQuota(boolean useQuota) {
+        this.useQuota = useQuota;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getApprovedAt() {
+        return approvedAt;
+    }
+
+    public void setApprovedAt(LocalDateTime approvedAt) {
+        this.approvedAt = approvedAt;
+    }
+
+    public LocalDateTime getEta() {
+        return eta;
+    }
+
+    public void setEta(LocalDateTime eta) {
+        this.eta = eta;
+    }
+
+    public Otp getOtp() {
+        return otp;
+    }
+
+    public void setOtp(Otp otp) {
+        this.otp = otp;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public BigDecimal getCollectedAmount() {
+        return collectedAmount;
+    }
+
+    public void setCollectedAmount(BigDecimal collectedAmount) {
+        this.collectedAmount = collectedAmount;
+    }
+
+    public String getApprovedBy() {
+        return approvedBy;
+    }
+
+    public void setApprovedBy(String approvedBy) {
+        this.approvedBy = approvedBy;
+    }
 }

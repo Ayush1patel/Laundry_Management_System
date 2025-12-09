@@ -1,1 +1,22 @@
-[]
+[ {
+  "id" : "ORD-DD43BC1D",
+  "studentId" : "USR-BT2024002",
+  "rollNumber" : "BT2024002",
+  "servicesRequested" : [ "WASH" ],
+  "weightKg" : 4.0,
+  "itemsToIron" : [ ],
+  "estimatedCost" : 50,
+  "useQuota" : false,
+  "status" : "PICKED_UP",
+  "createdAt" : "2025-12-06T16:32:26",
+  "approvedAt" : "2025-12-09T12:15:22",
+  "eta" : "2025-12-09T12:19:27",
+  "otp" : {
+    "otpValue" : "9310",
+    "expiresAt" : [ 2025, 12, 9, 12, 30, 22, 722850300 ],
+    "used" : true,
+    "attempts" : 0
+  },
+  "collectedAmount" : 50.0,
+  "approvedBy" : "Staff Name"
+} ]

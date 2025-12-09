@@ -8,14 +8,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.0</version>
+        <version>3.2.0</version>
         <relativePath/>
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>laundary</artifactId>
+    <artifactId>laundry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>laundary</name>
+    <name>laundry</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

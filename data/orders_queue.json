@@ -1,1 +1,38 @@
-[]
+[ {
+  "id" : "ORD-B1E8850A",
+  "studentId" : "USR-BT2024001",
+  "rollNumber" : "BT2024001",
+  "servicesRequested" : [ "IRON", "WASH", "DRY" ],
+  "weightKg" : 3.0,
+  "itemsToIron" : [ {
+    "clothes" : {
+      "type" : "SHIRT",
+      "id" : "e4813a05-0a2f-49d5-b3d6-3fdb8eec0f20",
+      "weightKg" : 0.0,
+      "ironCost" : 5.0
+    },
+    "quantity" : 2
+  }, {
+    "clothes" : {
+      "type" : "PANT",
+      "id" : "f8f34576-a778-454f-a023-e98ef77aaaf5",
+      "weightKg" : 0.0,
+      "ironCost" : 7.0
+    },
+    "quantity" : 1
+  } ],
+  "estimatedCost" : 117.0,
+  "useQuota" : true,
+  "status" : "APPROVED",
+  "createdAt" : "2025-12-06T16:20:24",
+  "approvedAt" : "2025-12-06T16:21:32",
+  "eta" : "2025-12-06T17:21:32",
+  "otp" : {
+    "otpValue" : "9409",
+    "expiresAt" : [ 2025, 12, 6, 16, 36, 32, 338221600 ],
+    "used" : false,
+    "attempts" : 0
+  },
+  "collectedAmount" : 20.0,
+  "approvedBy" : "WardenA"
+} ]

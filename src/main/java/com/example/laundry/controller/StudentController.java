@@ -51,23 +51,23 @@ public class StudentController {
                     req.getServicesRequested(),
                     req.getWeightKg(),
                     req.getItemsToIron(),
-                    req.isUseQuota()
-            );
+                    req.isUseQuota());
 
             // The actual quota is NOT decremented here, only on approval.
-            // For a better user experience, the response will reflect what the quota WILL BE.
+            // For a better user experience, the response will reflect what the quota WILL
+            // BE.
             int currentQuota = s == null ? 0 : s.getQuotaRemaining();
             int projectedQuota = currentQuota;
-            
-            boolean willUseQuota = req.isUseQuota()
-                    && req.getServicesRequested().contains(com.example.laundry.model.ServiceType.WASH)
+
+            boolean willUseQuota = req.getServicesRequested().contains(com.example.laundry.model.ServiceType.WASH)
                     && s != null && s.getQuotaRemaining() > 0;
 
             if (willUseQuota) {
                 projectedQuota = currentQuota - 1;
             }
 
-            CreateOrderResponse resp = new CreateOrderResponse(o.getId(), o.getEstimatedCost(), projectedQuota, "Order created (UNAPPROVED)");
+            CreateOrderResponse resp = new CreateOrderResponse(o.getId(), o.getEstimatedCost(), projectedQuota,
+                    "Order created (UNAPPROVED)");
             return ResponseEntity.ok(resp);
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
@@ -84,8 +84,10 @@ public class StudentController {
     public ResponseEntity<?> getQuota(@PathVariable String studentId) {
         try {
             Optional<Student> maybe = studentService.findById(studentId);
-            if (maybe.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Student not found"));
-            return ResponseEntity.ok(Map.of("quotaRemaining", maybe.get().getQuotaRemaining(), "amountDue", maybe.get().getAmountDue()));
+            if (maybe.isEmpty())
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Student not found"));
+            return ResponseEntity.ok(
+                    Map.of("quotaRemaining", maybe.get().getQuotaRemaining(), "amountDue", maybe.get().getAmountDue()));
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error", ex.getMessage()));
         }
@@ -97,13 +99,14 @@ public class StudentController {
      */
     @GetMapping("/{studentId}/orders")
     public ResponseEntity<?> getStudentOrders(@PathVariable String studentId,
-                                              @RequestParam(required = false) String roll) {
+            @RequestParam(required = false) String roll) {
         try {
             String rollToMatch = roll;
             if (rollToMatch == null) {
                 // try to find roll from studentId
                 Optional<Student> maybe = studentService.findById(studentId);
-                if (maybe.isPresent()) rollToMatch = maybe.get().getRollNumber();
+                if (maybe.isPresent())
+                    rollToMatch = maybe.get().getRollNumber();
             }
 
             final String finalRoll = rollToMatch;

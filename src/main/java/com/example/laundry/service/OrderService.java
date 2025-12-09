@@ -15,7 +15,8 @@ import java.util.Set;
  * Core business logic for creating orders, approving, and pickup.
  *
  * - createOrder(): validates and writes to unapproved_orders.json
- * - approveOrder(): moves from unapproved -> queue, consumes quota if applicable, sets ETA and OTP
+ * - approveOrder(): moves from unapproved -> queue, consumes quota if
+ * applicable, sets ETA and OTP
  * - pickupWithOtp(): verifies OTP and archives order as completed
  */
 @Service
@@ -28,10 +29,10 @@ public class OrderService {
     private final EtaService etaService;
 
     public OrderService(StorageService storage,
-                        StudentService studentService,
-                        PricingService pricing,
-                        OtpService otpService,
-                        EtaService etaService) {
+            StudentService studentService,
+            PricingService pricing,
+            OtpService otpService,
+            EtaService etaService) {
         this.storage = storage;
         this.studentService = studentService;
         this.pricing = pricing;
@@ -40,7 +41,7 @@ public class OrderService {
     }
 
     public LaundryOrder createOrder(String studentId, String rollNumber, Set<ServiceType> services,
-                                    Double weightKg, List<OrderItem> itemsToIron, boolean useQuota) throws Exception {
+            Double weightKg, List<OrderItem> itemsToIron, boolean useQuota) throws Exception {
         ValidationUtils.validateServices(services);
         if (services.contains(ServiceType.WASH) || services.contains(ServiceType.DRY)) {
             ValidationUtils.validateWeight(weightKg);
@@ -51,11 +52,13 @@ public class OrderService {
         order.setCreatedAt(LocalDateTime.now());
         order.setServicesRequested(services);
         order.setWeightKg(weightKg);
-        if (itemsToIron != null) order.setItemsToIron(itemsToIron);
+        if (itemsToIron != null)
+            order.setItemsToIron(itemsToIron);
         order.setUseQuota(useQuota);
 
         Student student = null;
-        if (studentId != null) student = studentService.findById(studentId).orElse(null);
+        if (studentId != null)
+            student = studentService.findById(studentId).orElse(null);
 
         BigDecimal estimate = pricing.computeTotalEstimate(student, services, useQuota, weightKg, itemsToIron);
         order.setEstimatedCost(estimate);
@@ -70,23 +73,26 @@ public class OrderService {
 
     public void approveOrder(String orderId, BigDecimal collectedAmount, String approvedBy) throws Exception {
         Optional<LaundryOrder> opt = storage.findUnapprovedById(orderId);
-        if (opt.isEmpty()) throw new RuntimeException("Order not found in unapproved: " + orderId);
+        if (opt.isEmpty())
+            throw new RuntimeException("Order not found in unapproved: " + orderId);
         LaundryOrder o = opt.get();
 
-        // consume quota if applicable
-        if (o.isUseQuota() && o.getServicesRequested().contains(ServiceType.WASH) && o.getStudentId() != null) {
-            storage.findStudentById(o.getStudentId()).ifPresent(s -> {
+        // consume quota if applicable (MANDATORY if available)
+        if (o.getServicesRequested().contains(ServiceType.WASH) && o.getStudentId() != null) {
+            Optional<Student> sOpt = storage.findStudentById(o.getStudentId());
+            if (sOpt.isPresent()) {
+                Student s = sOpt.get();
+                // Mandatory usage: If quota > 0, use it.
                 if (s.getQuotaRemaining() > 0) {
                     s.useQuota(1);
-                    try {
-                        storage.saveStudent(s);
-                    } catch (Exception ex) {
-                        throw new RuntimeException(ex);
-                    }
+                    storage.saveStudent(s);
                 }
-            });
+                // If quota <= 0, we simply approve without deducting (paid order).
+            }
         }
 
+        o.setCollectedAmount(collectedAmount);
+        o.setApprovedBy(approvedBy);
         o.setStatus(OrderStatus.APPROVED);
         o.setApprovedAt(LocalDateTime.now());
         o.setEta(etaService.estimateEtaForNewOrder());
@@ -103,10 +109,12 @@ public class OrderService {
 
     public boolean pickupWithOtp(String orderId, String otpAttempt) throws Exception {
         Optional<LaundryOrder> opt = storage.findQueuedById(orderId);
-        if (opt.isEmpty()) throw new RuntimeException("Order not found in queue: " + orderId);
+        if (opt.isEmpty())
+            throw new RuntimeException("Order not found in queue: " + orderId);
         LaundryOrder order = opt.get();
         boolean ok = otpService.verifyOtp(orderId, otpAttempt);
-        if (!ok) return false;
+        if (!ok)
+            return false;
         order.setStatus(OrderStatus.PICKED_UP);
         // record completion time in eta field for analytics / ETAService
         LocalDateTime completedAt = LocalDateTime.now();

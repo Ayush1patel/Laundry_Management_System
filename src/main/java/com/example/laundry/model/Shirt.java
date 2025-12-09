@@ -10,7 +10,7 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Shirt extends Clothes {
 
-    public static final BigDecimal DEFAULT_IRON_COST = BigDecimal.valueOf(10);
+    public static final BigDecimal DEFAULT_IRON_COST = BigDecimal.valueOf(8);
 
     public Shirt() {
         super(UUID.randomUUID().toString(), 0.0, DEFAULT_IRON_COST);
@@ -20,7 +20,6 @@ public class Shirt extends Clothes {
         super(
                 UUID.randomUUID().toString(),
                 weightKg,
-                ironCost == null ? DEFAULT_IRON_COST : ironCost
-        );
+                ironCost == null ? DEFAULT_IRON_COST : ironCost);
     }
 }
