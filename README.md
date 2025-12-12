@@ -102,6 +102,12 @@ The server will start at `http://localhost:8080`.
 
 ---
 
+## 📽️ Individual Contributions Video
+
+A detailed video explaining the individual contribution of each team member can be found here:
+
+👉 **[Watch the Contribution Video](https://iiitbac-my.sharepoint.com/:v:/r/personal/ayush_patel171_iiitb_ac_in/Documents/km_java_1080p_30f_20251212_122429.mp4?csf=1&web=1&e=KBR2gM)**  
+
 ## 👥 Role-by-role Breakdown (Roles 1–6)
 
 ### **Role 1 — Data Modeling Lead**
