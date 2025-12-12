@@ -106,7 +106,7 @@ The server will start at `http://localhost:8080`.
 
 A detailed video explaining the individual contribution of each team member can be found here:
 
-👉 **[Watch the Contribution Video](https://iiitbac-my.sharepoint.com/:v:/r/personal/ayush_patel171_iiitb_ac_in/Documents/km_java_1080p_30f_20251212_122429.mp4?csf=1&web=1&e=KBR2gM)**  
+👉 **[Watch the Contribution Video](https://iiitbac-my.sharepoint.com/:v:/g/personal/ayush_patel171_iiitb_ac_in/IQDd73QyOF-RSrx9Gi_A_K6EAeCbQ2787B28GvlOyfiBGLE?e=6dkcoK)**  
 
 ## 👥 Role-by-role Breakdown (Roles 1–6)
 
